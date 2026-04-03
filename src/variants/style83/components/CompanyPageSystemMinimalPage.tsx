@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { aiMindsetCase, coreIdeas, differentiation, offers } from '../../../content/companySystemContent';
 
 const GridOverlay = ({ active }: { active: boolean }) =>
   active ? (
@@ -76,6 +77,70 @@ export default function CompanyPageSystemMinimalPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="border-t border-black/10 bg-[#F7F6F1] px-6 py-20 md:px-24">
+          <div className="grid gap-12 md:grid-cols-2">
+            <div>
+              <div className="text-xs uppercase tracking-[0.24em] text-black/45">promise</div>
+              <div className="mt-6 grid gap-3">
+                {coreIdeas.map((item) => (
+                  <div key={item} className="border border-black/10 bg-white px-4 py-4 text-sm leading-relaxed">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-[0.24em] text-black/45">why not a normal team flow</div>
+              <div className="mt-6 grid gap-3">
+                {differentiation.map((item, index) => (
+                  <div key={item} className="border border-black/10 bg-white px-4 py-4">
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-black/35">0{index + 1}</div>
+                    <div className="mt-2 text-sm leading-relaxed">{item}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-black/10 bg-white px-6 py-20 md:px-24">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {offers.map((offer) => (
+              <article key={offer.name} className="flex min-h-[280px] flex-col justify-between border border-black/10 p-6">
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-black/40">{offer.price}</div>
+                  <h3 className="mt-3 text-2xl font-medium tracking-tight">{offer.name}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-black/70">{offer.outcome}</p>
+                </div>
+                <div className="mt-8 flex flex-wrap gap-2">
+                  {offer.bullets.map((item) => (
+                    <span key={item} className="border border-black/10 px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-black/55">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-t border-black/10 bg-[#F2F2F2] px-6 py-20 md:px-24">
+          <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <div className="text-xs uppercase tracking-[0.24em] text-black/45">worked with</div>
+              <h2 className="mt-4 text-5xl tracking-tighter">AI Mindset</h2>
+              <p className="mt-5 max-w-2xl text-sm leading-relaxed text-black/75">{aiMindsetCase.summary}</p>
+            </div>
+            <div className="grid gap-3">
+              {aiMindsetCase.metrics.map((item) => (
+                <div key={item} className="border border-black/10 bg-white px-4 py-4 text-sm">
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { aiMindsetCase, offers, proofPoints } from '../../../content/companySystemContent';
 
 const GridItem = ({ number, title, subtitle, className = '' }: { number: string; title: string; subtitle: string; className?: string }) => (
   <div className={`border-b border-black p-6 md:p-8 flex flex-col justify-between min-h-[280px] hover:bg-black hover:text-[#FF3300] transition-colors group ${className}`}>
@@ -57,6 +58,46 @@ export default function CompanyPageSystemFlammaPage() {
           <h3 className="text-2xl md:text-4xl font-bold mb-4">NEXT STEP: ANALYTICS AGENT</h3>
           <p className="text-xl md:text-2xl opacity-80">Suggest reorder, redesign and test hypotheses.</p>
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 border-b border-black md:grid-cols-2">
+        {offers.slice(0, 2).map((offer, index) => (
+          <article key={offer.name} className={`p-8 md:p-12 ${index === 0 ? 'border-b md:border-b-0 md:border-r border-black' : ''}`}>
+            <div className="text-xs uppercase tracking-[0.2em] opacity-60">{offer.price}</div>
+            <h3 className="mt-4 text-4xl md:text-6xl font-black uppercase leading-[0.9] tracking-tight">{offer.name}</h3>
+            <p className="mt-4 max-w-xl text-lg leading-tight">{offer.outcome}</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {offer.bullets.map((item) => (
+                <span key={item} className="border border-black px-2 py-1 text-[10px] uppercase tracking-[0.16em]">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 border-b border-black md:grid-cols-[0.9fr_1.1fr]">
+        <section className="border-b border-black p-8 md:border-b-0 md:border-r md:p-12">
+          <div className="text-xs uppercase tracking-[0.2em]">Worked with</div>
+          <h2 className="mt-4 text-5xl md:text-7xl font-black uppercase leading-[0.88] tracking-tight">{aiMindsetCase.name}</h2>
+          <p className="mt-5 max-w-xl text-lg leading-tight">{aiMindsetCase.summary}</p>
+        </section>
+        <section className="grid grid-cols-1 md:grid-cols-2">
+          {aiMindsetCase.metrics.map((item, index) => (
+            <div key={item} className={`p-8 text-2xl font-bold uppercase leading-tight tracking-tight ${index % 2 === 0 ? 'md:border-r border-black' : ''} ${index < aiMindsetCase.metrics.length - 2 ? 'border-b border-black' : ''}`}>
+              {item}
+            </div>
+          ))}
+        </section>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 border-b border-black">
+        {proofPoints.map((item, index) => (
+          <div key={item} className={`p-8 md:p-10 text-xl font-medium leading-tight ${index < 2 ? 'border-b md:border-b-0 md:border-r border-black' : ''}`}>
+            {item}
+          </div>
+        ))}
       </div>
     </div>
   );

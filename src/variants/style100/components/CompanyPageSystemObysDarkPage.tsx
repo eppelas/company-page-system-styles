@@ -1,4 +1,5 @@
 import React from 'react';
+import { aiMindsetCase, differentiation, offers, proofPoints } from '../../../content/companySystemContent';
 
 const Ring = ({ radius, text, className = '' }: { radius: number; text: string; className?: string }) => (
   <div className={`absolute inset-0 flex items-center justify-center ${className}`}>
@@ -63,6 +64,77 @@ export default function CompanyPageSystemObysDarkPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="results" className="mb-40">
+          <div className="flex items-baseline gap-4 mb-12 border-b border-white/20 pb-4">
+            <span className="text-xs tracking-widest uppercase opacity-60">Chapter (II)</span>
+            <h2 className="text-4xl italic">Why it beats the usual flow</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {differentiation.map((item, index) => (
+              <article key={item} className="min-h-[220px] border border-white/10 bg-white/[0.02] p-6">
+                <div className="text-[10px] uppercase tracking-[0.28em] text-white/45">0{index + 1}</div>
+                <p className="mt-8 text-lg leading-relaxed text-white/78">{item}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-40">
+          <div className="flex items-baseline gap-4 mb-12 border-b border-white/20 pb-4">
+            <span className="text-xs tracking-widest uppercase opacity-60">Chapter (III)</span>
+            <h2 className="text-4xl italic">Offers in orbit</h2>
+          </div>
+          <div className="space-y-4">
+            {offers.map((offer) => (
+              <article key={offer.name} className="grid gap-5 border border-white/10 bg-white/[0.02] p-6 md:grid-cols-[0.95fr_0.8fr_1.25fr] md:items-start">
+                <div>
+                  <div className="text-[10px] uppercase tracking-[0.28em] text-white/45">{offer.price}</div>
+                  <h3 className="mt-3 text-3xl italic text-white">{offer.name}</h3>
+                </div>
+                <div className="text-sm leading-relaxed text-white/60">{offer.outcome}</div>
+                <div className="flex flex-wrap gap-2">
+                  {offer.bullets.map((item) => (
+                    <span key={item} className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-white/55">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-16">
+          <div className="flex items-baseline gap-4 mb-12 border-b border-white/20 pb-4">
+            <span className="text-xs tracking-widest uppercase opacity-60">Chapter (IV)</span>
+            <h2 className="text-4xl italic">Proof</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-[1fr_1fr]">
+            <article className="border border-white/10 bg-white/[0.02] p-6">
+              <div className="text-[10px] uppercase tracking-[0.28em] text-white/45">Worked with</div>
+              <h3 className="mt-4 text-4xl italic">{aiMindsetCase.name}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-white/65">{aiMindsetCase.summary}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {aiMindsetCase.metrics.map((item) => (
+                  <span key={item} className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-white/55">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+            <article className="border border-white/10 bg-white/[0.02] p-6">
+              <div className="text-[10px] uppercase tracking-[0.28em] text-white/45">What this proves</div>
+              <div className="mt-4 grid gap-4">
+                {proofPoints.map((item) => (
+                  <div key={item} className="border-t border-white/10 pt-4 text-sm leading-relaxed text-white/65">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </article>
           </div>
         </section>
       </div>

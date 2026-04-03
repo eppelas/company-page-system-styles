@@ -10,19 +10,13 @@ import Style73App from './variants/style73/App';
 import Style83App from './variants/style83/App';
 import Style96App from './variants/style96/App';
 import Style100App from './variants/style100/App';
+import { aiMindsetCase, coreIdeas, differentiation, offers, type OfferEntry } from './content/companySystemContent';
 
 type StyleEntry = {
   id: string;
   name: string;
   note: string;
   Component: React.ComponentType;
-};
-
-type OfferEntry = {
-  name: string;
-  price: string;
-  outcome: string;
-  bullets: string[];
 };
 
 const styles: StyleEntry[] = [
@@ -37,47 +31,6 @@ const styles: StyleEntry[] = [
   { id: '83', name: 'Minimal System Principles', note: 'light grid / minimal controls', Component: Style83App },
   { id: '96', name: 'Wireframe Editorial System', note: 'dark wireframe / oversized type', Component: Style96App },
   { id: '100', name: 'Obys Dark Orbit System', note: 'dark orbit / concentric narrative', Component: Style100App },
-];
-
-const coreIdeas = [
-  'AI in design that feels strong, not generic',
-  'Lower design and production cost',
-  'Faster page creation and launch cycles',
-  'Direct work by product managers without waiting on designers',
-];
-
-const offers: OfferEntry[] = [
-  {
-    name: 'Consultation',
-    price: '200 / hour',
-    outcome: 'Find out what is реально possible for the exact request',
-    bullets: ['concrete feasibility', 'live request review'],
-  },
-  {
-    name: 'AI-First Design Transition Support',
-    price: '1500 / month',
-    outcome: 'Ongoing support while the team moves to an AI-first design workflow',
-    bullets: ['shared calls', 'process support'],
-  },
-  {
-    name: 'AI Design Factory Turnkey',
-    price: '14000 one-off setup / about 15k month dev / up to 45k euro by case',
-    outcome: 'A full page factory for one company or product line',
-    bullets: [
-      'branding',
-      'block architecture',
-      'design guide',
-      'CMS setup',
-      'CMS configuration',
-      'product manager training',
-    ],
-  },
-  {
-    name: 'AI Design Factory Turnkey +',
-    price: 'custom',
-    outcome: 'Turnkey factory plus auto-generation and analytics connection',
-    bullets: ['auto generation', 'analytics integration'],
-  },
 ];
 
 function BusinessBrief() {
@@ -111,6 +64,32 @@ function BusinessBrief() {
 
           {expanded && (
             <div className="mt-3 grid gap-2">
+              <article className="rounded-[20px] border border-black/10 bg-black/[0.03] p-3">
+                <div className="text-[11px] uppercase tracking-[0.16em] text-black/55">Why this works</div>
+                <div className="mt-2 grid gap-2">
+                  {differentiation.map((item) => (
+                    <div key={item} className="text-xs text-black/75">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </article>
+
+              <article className="rounded-[20px] border border-black/10 bg-black/[0.03] p-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="text-sm font-semibold text-black">{aiMindsetCase.name}</div>
+                  <div className="text-[11px] uppercase tracking-[0.16em] text-black/55">proof case</div>
+                </div>
+                <div className="mt-2 text-xs text-black/75">{aiMindsetCase.summary}</div>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {aiMindsetCase.metrics.map((item) => (
+                    <span key={item} className="rounded-full border border-black/10 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-black/60">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </article>
+
               {offers.map((offer) => (
                 <article key={offer.name} className="rounded-[20px] border border-black/10 bg-black/[0.03] p-3">
                   <div className="flex items-start justify-between gap-3">

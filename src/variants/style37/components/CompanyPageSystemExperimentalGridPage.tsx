@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { aiMindsetCase, offers, proofPoints } from '../../../content/companySystemContent';
 
 const LinkItem = ({ text, note }: { text: string; note?: string }) => (
   <div className="group inline-block mr-4 mb-2">
@@ -82,6 +83,48 @@ export default function CompanyPageSystemExperimentalGridPage() {
               <p className="text-2xl md:text-3xl font-medium leading-tight">{copy}</p>
             </article>
           ))}
+        </section>
+
+        <section className="mt-24 grid grid-cols-1 gap-8 border-t border-black pt-8 md:grid-cols-12">
+          <div className="md:col-span-3 text-xl font-mono">offers:</div>
+          <div className="md:col-span-9 grid gap-4">
+            {offers.map((offer) => (
+              <article key={offer.name} className="grid gap-3 border border-black bg-white/80 p-5 md:grid-cols-[0.9fr_0.7fr_1.4fr] md:items-start">
+                <h3 className="text-2xl md:text-4xl font-bold tracking-tight">{offer.name}</h3>
+                <div className="text-sm font-mono uppercase opacity-60">{offer.price}</div>
+                <div>
+                  <p className="text-sm leading-relaxed">{offer.outcome}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {offer.bullets.map((item) => (
+                      <span key={item} className="border border-black px-2 py-1 text-[10px] font-mono uppercase">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-24 grid grid-cols-1 gap-8 border-t border-black pt-8 md:grid-cols-12">
+          <div className="md:col-span-3 text-xl font-mono">proof:</div>
+          <div className="md:col-span-9 grid gap-4 md:grid-cols-2">
+            <article className="border border-black bg-white/80 p-6">
+              <div className="text-sm font-mono uppercase opacity-60">worked with</div>
+              <h3 className="mt-4 text-4xl font-bold tracking-tight">{aiMindsetCase.name}</h3>
+              <p className="mt-4 text-sm leading-relaxed">{aiMindsetCase.summary}</p>
+            </article>
+            <article className="border border-black bg-white/80 p-6">
+              <div className="flex flex-wrap gap-2">
+                {aiMindsetCase.metrics.concat(proofPoints).map((item) => (
+                  <span key={item} className="border border-black px-2 py-1 text-[10px] font-mono uppercase">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          </div>
         </section>
       </main>
     </div>

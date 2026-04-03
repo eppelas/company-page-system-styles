@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu } from 'lucide-react';
+import { aiMindsetCase, coreIdeas, deliverySteps, offers } from '../../../content/companySystemContent';
 
 const Cube = ({ size = 100 }: { size?: number }) => (
   <div className="relative" style={{ width: size, height: size, transformStyle: 'preserve-3d', animation: 'rotate 20s infinite linear' }}>
@@ -65,6 +66,62 @@ export default function CompanyPageSystemWireframePage() {
           <div className="relative h-[50vh] flex items-center justify-center border border-white/10">
             <Cube size={150} />
             <div className="absolute bottom-4 right-4 text-[10px] uppercase tracking-widest">Figure 1.2 — Page factory</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="min-h-screen py-24 px-6 md:px-12 relative border-t border-white/10">
+        <div className="flex justify-between items-end border-b border-white/20 pb-4 mb-12">
+          <div className="text-xs tracking-widest uppercase opacity-60">Chapter (III)</div>
+          <div className="italic text-2xl">The Offer</div>
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {offers.map((offer) => (
+            <article key={offer.name} className="min-h-[280px] border border-white/10 bg-white/[0.02] p-6">
+              <div className="text-[10px] uppercase tracking-widest text-white/45">{offer.price}</div>
+              <h3 className="mt-4 text-2xl tracking-tight">{offer.name}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-white/70">{offer.outcome}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {offer.bullets.map((item) => (
+                  <span key={item} className="border border-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-white/55">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="min-h-screen py-24 px-6 md:px-12 relative border-t border-white/10">
+        <div className="flex justify-between items-end border-b border-white/20 pb-4 mb-12">
+          <div className="text-xs tracking-widest uppercase opacity-60">Chapter (IV)</div>
+          <div className="italic text-2xl">The Operating Loop</div>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {deliverySteps.map((item) => (
+            <article key={item.step} className="border border-white/10 p-6">
+              <div className="text-[10px] uppercase tracking-widest text-white/45">{item.step}</div>
+              <h3 className="mt-4 text-3xl font-light">{item.title}</h3>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/70">{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-24 px-6 md:px-12 border-t border-white/10 bg-white text-black">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[0.95fr_1.05fr]">
+          <div>
+            <div className="text-[10px] uppercase tracking-widest text-black/45">Proof case</div>
+            <h2 className="mt-4 text-6xl leading-[0.88] tracking-tighter">{aiMindsetCase.name}</h2>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-black/70">{aiMindsetCase.summary}</p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            {aiMindsetCase.metrics.concat(coreIdeas.slice(0, 2)).map((item) => (
+              <div key={item} className="border border-black/10 px-4 py-4 text-sm leading-relaxed">
+                {item}
+              </div>
+            ))}
           </div>
         </div>
       </section>

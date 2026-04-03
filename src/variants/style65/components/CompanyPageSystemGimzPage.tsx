@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { aiMindsetCase, differentiation, offers } from '../../../content/companySystemContent';
 
 const Header = () => (
   <header className="fixed top-0 left-0 w-full p-6 md:p-8 flex justify-between items-start z-50 mix-blend-difference text-white text-xs md:text-sm font-medium tracking-wide">
@@ -98,6 +99,58 @@ export default function CompanyPageSystemGimzPage() {
             <br />
             brand intact.
           </h2>
+        </div>
+      </section>
+
+      <section className="border-t border-white/20 px-4 py-20 md:px-8">
+        <div className="mx-auto max-w-[90vw] grid gap-4 md:grid-cols-3">
+          {differentiation.map((item, index) => (
+            <article key={item} className="border border-white/20 p-6">
+              <div className="text-xs uppercase tracking-[0.2em] text-white/45">0{index + 1}</div>
+              <p className="mt-6 text-xl uppercase leading-tight tracking-tight">{item}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-20 text-black md:px-8">
+        <div className="mx-auto max-w-[90vw]">
+          <div className="mb-10 text-sm uppercase tracking-[0.2em] text-black/40">offers</div>
+          <div className="border-t border-black/20">
+            {offers.map((offer) => (
+              <div key={offer.name} className="grid gap-4 border-b border-black/20 py-8 md:grid-cols-[0.9fr_0.8fr_1.3fr] md:items-start">
+                <div className="text-3xl uppercase tracking-tight font-black">{offer.name}</div>
+                <div className="text-sm uppercase tracking-[0.18em] text-black/45">{offer.price}</div>
+                <div>
+                  <p className="text-sm leading-relaxed text-black/70">{offer.outcome}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {offer.bullets.map((item) => (
+                      <span key={item} className="border border-black/10 px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-black/55">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/20 px-4 py-20 md:px-8">
+        <div className="mx-auto max-w-[90vw] grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <div className="text-sm uppercase tracking-[0.2em] text-white/45">worked with</div>
+            <h2 className="mt-4 text-5xl uppercase leading-none tracking-tighter font-black">{aiMindsetCase.name}</h2>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-white/68">{aiMindsetCase.summary}</p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            {aiMindsetCase.metrics.map((item) => (
+              <div key={item} className="border border-white/20 p-4 text-sm uppercase tracking-[0.12em]">
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

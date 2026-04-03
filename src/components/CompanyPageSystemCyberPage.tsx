@@ -1,4 +1,5 @@
 import React from 'react';
+import { aiMindsetCase, differentiation, offers } from '../content/companySystemContent';
 
 const Crosshair = ({ className = "" }: { className?: string }) => (
   <div className={`absolute text-white/50 text-xs font-mono pointer-events-none ${className}`}>+</div>
@@ -131,6 +132,36 @@ const Content = () => (
           </div>
         </div>
       </div>
+
+      <div className="grid md:grid-cols-12 gap-4">
+        <SectionLabel>WHY US</SectionLabel>
+        <div className="md:col-span-9 grid gap-3">
+          {differentiation.map((item, index) => (
+            <div key={item} className="border border-[#333] bg-[#111] p-4 font-mono text-xs uppercase leading-relaxed text-gray-300">
+              <span className="mr-3 text-gray-600">0{index + 1}</span>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-12 gap-4">
+        <SectionLabel>PROOF</SectionLabel>
+        <div className="md:col-span-9 grid gap-4 md:grid-cols-[0.95fr_1.05fr]">
+          <div className="border border-[#333] bg-[#111] p-5 font-mono text-xs uppercase text-gray-300">
+            <div className="text-gray-600">WORKED WITH</div>
+            <div className="mt-3 text-lg text-white">{aiMindsetCase.name}</div>
+            <div className="mt-3 leading-relaxed normal-case text-sm text-gray-400">{aiMindsetCase.summary}</div>
+          </div>
+          <div className="grid gap-2 md:grid-cols-2">
+            {aiMindsetCase.metrics.map((item) => (
+              <div key={item} className="border border-[#333] bg-[#111] p-4 font-mono text-xs uppercase text-white">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
 
     <div className="md:col-span-5 relative mt-12 md:mt-0" id="contact">
@@ -151,6 +182,16 @@ const Content = () => (
                 Faster page launches. Lower design cost. Shared brand logic. Direct editing without GitHub.
               </div>
             </div>
+
+            {offers.map((offer) => (
+              <div key={offer.name} className="bg-[#111] border border-[#333] p-4 hover:border-white transition-colors">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="text-white font-mono text-sm uppercase">{offer.name}</div>
+                  <div className="text-gray-600 font-mono text-[10px] uppercase text-right">{offer.price}</div>
+                </div>
+                <div className="mt-3 text-gray-400 font-mono text-xs leading-relaxed normal-case">{offer.outcome}</div>
+              </div>
+            ))}
 
             <a
               href="mailto:alex@aimindset.org?subject=Company%20Page%20System"

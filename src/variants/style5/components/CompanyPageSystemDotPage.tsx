@@ -1,4 +1,5 @@
 import React from 'react';
+import { aiMindsetCase, offers, proofPoints } from '../../../content/companySystemContent';
 
 const DotContainer = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => (
   <div className={`w-full max-w-[1400px] mx-auto px-6 md:px-12 ${className}`}>{children}</div>
@@ -118,6 +119,42 @@ export default function CompanyPageSystemDotPage() {
               <p className="text-2xl font-bold leading-tight">{copy}</p>
             </article>
           ))}
+        </DotContainer>
+      </section>
+
+      <section id="cms" className="py-24 bg-white border-y border-[#111111]/10">
+        <DotContainer className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {offers.map((offer) => (
+            <article key={offer.name} className="rounded-[40px] border-2 border-[#111111] p-8 bg-[#F8F7F1]">
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-[#5465FF]">{offer.price}</div>
+              <h3 className="mt-4 text-3xl font-bold tracking-tight leading-none">{offer.name}</h3>
+              <p className="mt-4 text-sm leading-relaxed">{offer.outcome}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {offer.bullets.map((item) => (
+                  <span key={item} className="rounded-full border border-[#111111] px-2 py-1 text-[10px] font-bold uppercase tracking-[0.14em]">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </DotContainer>
+      </section>
+
+      <section id="analytics" className="py-24 bg-[#5465FF]">
+        <DotContainer className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] items-start">
+          <div>
+            <div className="text-sm font-bold uppercase tracking-[0.2em] text-[#111111]/65">Worked with</div>
+            <h2 className="mt-4 text-5xl md:text-7xl font-bold tracking-tight leading-[0.9]">{aiMindsetCase.name}</h2>
+            <p className="mt-5 max-w-xl text-lg font-bold leading-tight text-[#111111]">{aiMindsetCase.summary}</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {aiMindsetCase.metrics.concat(proofPoints.slice(0, 2)).map((item) => (
+              <div key={item} className="rounded-[32px] border-2 border-[#111111] bg-[#F3F2EC] p-5 text-sm font-bold leading-relaxed">
+                {item}
+              </div>
+            ))}
+          </div>
         </DotContainer>
       </section>
 

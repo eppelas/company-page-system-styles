@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Menu } from 'lucide-react';
+import { logoAssetPath } from '../../../content/companySystemContent';
 
 const WireframeStyles = () => (
   <style>{`
@@ -140,7 +141,7 @@ export default function AiMindsetWireframeContentPage() {
 
       <header className="fixed top-0 left-0 right-0 z-40 px-6 py-6 flex justify-between items-start mix-blend-difference">
         <div className="flex items-center gap-2 text-[10px] tracking-widest uppercase font-medium">
-          <img src="/assets/ai-mindset-logo.png" alt="AI Mindset logo" className="h-4 w-4 object-contain" />
+          <img src={logoAssetPath} alt="AI Mindset logo" className="h-4 w-4 object-contain" />
           <span>AIM 48 · Company Page System</span>
         </div>
         <div className="font-serif italic text-xl absolute left-1/2 -translate-x-1/2">system</div>
