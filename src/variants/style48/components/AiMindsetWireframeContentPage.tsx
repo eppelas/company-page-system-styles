@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Menu } from 'lucide-react';
-import { logoAssetPath } from '../../../content/companySystemContent';
+import { aiMindsetCase, differentiation, logoAssetPath, offers } from '../../../content/companySystemContent';
 
 const WireframeStyles = () => (
   <style>{`
@@ -231,6 +231,48 @@ export default function AiMindsetWireframeContentPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="min-h-screen py-24 px-6 md:px-12 border-t border-white/10">
+        <ChapterHeader number="V" title="Offers and proof" />
+        <div className="grid gap-4 md:grid-cols-2">
+          {offers.map((offer) => (
+            <article key={offer.name} className="border border-white/10 bg-white/[0.02] p-6">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-2xl font-serif italic">{offer.name}</h3>
+                <div className="text-[10px] uppercase tracking-widest text-white/45">{offer.price}</div>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-white/70">{offer.outcome}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {offer.bullets.map((item) => (
+                  <span key={item} className="border border-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-white/55">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {differentiation.map((item, index) => (
+            <article key={item} className="border border-white/10 bg-white/[0.02] p-6">
+              <div className="text-[10px] uppercase tracking-widest text-white/45">0{index + 1}</div>
+              <p className="mt-6 text-sm leading-relaxed text-white/72">{item}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-12 border border-white/10 bg-white/[0.02] p-6 md:p-8">
+          <div className="text-[10px] uppercase tracking-widest text-white/45">Worked with</div>
+          <h3 className="mt-3 text-4xl font-serif italic">{aiMindsetCase.name}</h3>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/70">{aiMindsetCase.summary}</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {aiMindsetCase.metrics.map((item) => (
+              <span key={item} className="border border-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-white/55">
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 

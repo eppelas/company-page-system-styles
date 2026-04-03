@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Plus, Minus, Circle } from 'lucide-react';
 import { InteractiveRings } from './InteractiveRings';
 import { WireframeCylinder } from './WireframeCylinder';
+import { aiMindsetCase, offers } from '../../../content/companySystemContent';
 
 const ArchStyles = () => (
   <style>{`
@@ -256,6 +257,18 @@ export default function DataArchPage() {
               Ready for pilots
             </div>
 
+            <div className="mx-auto mb-10 grid max-w-5xl gap-4 md:grid-cols-2 text-left pointer-events-auto">
+              {offers.slice(0, 2).map((offer) => (
+                <article key={offer.name} className="rounded-[24px] border border-white/15 bg-black/25 p-5 backdrop-blur">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-inter text-lg text-white">{offer.name}</h3>
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-white/60">{offer.price}</div>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-white/75">{offer.outcome}</p>
+                </article>
+              ))}
+            </div>
+
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 pointer-events-auto">
               <button className="px-8 py-4 bg-white text-black font-mono text-xs uppercase tracking-widest hover:bg-white/90 transition-colors w-full md:w-auto">
                 Start Blueprint
@@ -269,6 +282,17 @@ export default function DataArchPage() {
               <span>Reusable blocks</span>
               <span>CMS-ready</span>
               <span>Multi-company scale</span>
+            </div>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-2 text-center pointer-events-auto">
+              <span className="rounded-full border border-white/15 px-3 py-2 text-[10px] uppercase tracking-widest text-white/55">
+                Worked with {aiMindsetCase.name}
+              </span>
+              {aiMindsetCase.metrics.slice(0, 3).map((item) => (
+                <span key={item} className="rounded-full border border-white/15 px-3 py-2 text-[10px] uppercase tracking-widest text-white/55">
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </section>

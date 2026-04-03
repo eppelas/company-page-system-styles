@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Menu } from 'lucide-react';
-import { logoAssetPath } from '../../../content/companySystemContent';
+import { aiMindsetCase, differentiation, logoAssetPath, offers } from '../../../content/companySystemContent';
 
 const WireframeStyles = () => (
   <style>{`
@@ -250,6 +250,44 @@ export default function AiMindsetWireframePage() {
                 </div>
              </div>
            ))}
+        </div>
+      </section>
+
+      <section className="min-h-screen py-24 px-6 md:px-12 border-t border-white/10">
+        <ChapterHeader number="V" title="Commercial layer" />
+        <div className="grid gap-4 md:grid-cols-3">
+          {differentiation.map((item, index) => (
+            <article key={item} className="border border-white/10 bg-white/[0.02] p-6">
+              <div className="text-[10px] uppercase tracking-widest text-white/45">0{index + 1}</div>
+              <p className="mt-8 text-lg leading-relaxed text-white/78">{item}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {offers.map((offer) => (
+            <article key={offer.name} className="border border-white/10 bg-white/[0.02] p-5">
+              <div className="text-[10px] uppercase tracking-widest text-white/45">{offer.price}</div>
+              <h3 className="mt-3 text-2xl font-serif italic">{offer.name}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-white/68">{offer.outcome}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-24 px-6 md:px-12 border-t border-white/10 bg-white text-black">
+        <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <div className="text-[10px] uppercase tracking-widest text-black/45">Proof case</div>
+            <h2 className="mt-4 text-5xl leading-[0.88] tracking-tighter">{aiMindsetCase.name}</h2>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-black/70">{aiMindsetCase.summary}</p>
+          </div>
+          <div className="grid gap-3 md:grid-cols-3">
+            {aiMindsetCase.metrics.map((item) => (
+              <div key={item} className="border border-black/10 px-4 py-4 text-sm leading-relaxed">
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

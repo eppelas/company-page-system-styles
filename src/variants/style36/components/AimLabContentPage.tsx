@@ -1,5 +1,5 @@
 import React from 'react';
-import { logoAssetPath } from '../../../content/companySystemContent';
+import { aiMindsetCase, differentiation, logoAssetPath, offers } from '../../../content/companySystemContent';
 
 export type AimContentTheme = {
   rootClassName: string;
@@ -95,29 +95,6 @@ const proofs = [
   'one block set can power multiple company sites',
   'less rework when the system is defined first',
   'faster launches with clearer ownership',
-];
-
-const plans = [
-  {
-    name: 'STARTER',
-    price: '$3K',
-    detail: 'audit, visual direction, and a first reusable page blueprint',
-  },
-  {
-    name: 'STUDIO',
-    price: '$8K',
-    detail: 'system design, block library, and CMS-ready implementation',
-  },
-  {
-    name: 'ENTERPRISE',
-    price: '$15K+',
-    detail: 'multiple page types, variant system, and rollout support',
-  },
-  {
-    name: 'PARTNER',
-    price: 'BY SCOPE',
-    detail: 'ongoing system expansion for new companies and product lines',
-  },
 ];
 
 export default function AimLabContentPage({ styleLabel, theme }: AimLabContentPageProps) {
@@ -268,16 +245,47 @@ export default function AimLabContentPage({ styleLabel, theme }: AimLabContentPa
         </section>
 
         <section className={`rounded-2xl border p-6 md:p-8 ${theme.cardClassName} ${theme.borderClassName}`}>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6">Packages</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {plans.map((plan) => (
-              <article key={plan.name} className={`rounded-xl border p-4 ${theme.surfaceClassName} ${theme.borderClassName}`}>
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <h3 className="text-lg font-semibold">{plan.name}</h3>
-                  <span className={`text-sm font-semibold ${theme.badgeClassName} px-2 py-1 rounded-full`}>{plan.price}</span>
-                </div>
-                <p className={`text-sm ${theme.mutedTextClassName}`}>{plan.detail}</p>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6">Why this beats a normal team handoff</h2>
+          <div className="grid gap-4">
+            {differentiation.map((item, index) => (
+              <article key={item} className={`rounded-xl border p-4 ${theme.surfaceClassName} ${theme.borderClassName}`}>
+                <div className={`text-xs uppercase tracking-[0.18em] mb-2 ${theme.mutedTextClassName}`}>0{index + 1}</div>
+                <p className="text-sm md:text-base leading-relaxed">{item}</p>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={`rounded-2xl border p-6 md:p-8 ${theme.cardClassName} ${theme.borderClassName}`}>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6">Actual offers</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {offers.map((offer) => (
+              <article key={offer.name} className={`rounded-xl border p-4 ${theme.surfaceClassName} ${theme.borderClassName}`}>
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <h3 className="text-lg font-semibold">{offer.name}</h3>
+                  <span className={`text-xs font-semibold ${theme.badgeClassName} px-2 py-1 rounded-full`}>{offer.price}</span>
+                </div>
+                <p className={`text-sm ${theme.mutedTextClassName}`}>{offer.outcome}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {offer.bullets.map((item) => (
+                    <span key={item} className={`px-2 py-1 rounded-full border text-[10px] uppercase tracking-[0.14em] ${theme.borderClassName}`}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={`rounded-2xl border p-6 md:p-8 ${theme.cardClassName} ${theme.borderClassName}`}>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Worked with AI Mindset</h2>
+          <p className="text-base md:text-lg leading-relaxed max-w-4xl mb-6">{aiMindsetCase.summary}</p>
+          <div className="flex flex-wrap gap-2">
+            {aiMindsetCase.metrics.map((item) => (
+              <span key={item} className={`px-3 py-2 rounded-full border text-xs uppercase tracking-[0.14em] ${theme.borderClassName}`}>
+                {item}
+              </span>
             ))}
           </div>
         </section>
