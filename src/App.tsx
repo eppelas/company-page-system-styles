@@ -18,6 +18,13 @@ type StyleEntry = {
   Component: React.ComponentType;
 };
 
+type OfferEntry = {
+  name: string;
+  price: string;
+  outcome: string;
+  bullets: string[];
+};
+
 const styles: StyleEntry[] = [
   { id: '5', name: 'Dot Signal System', note: 'white / blue / orbital editorial', Component: Style5App },
   { id: '36', name: 'Data Arch Blueprint', note: 'dark blueprint / arch system', Component: Style36App },
@@ -31,6 +38,102 @@ const styles: StyleEntry[] = [
   { id: '96', name: 'Wireframe Editorial System', note: 'dark wireframe / oversized type', Component: Style96App },
   { id: '100', name: 'Obys Dark Orbit System', note: 'dark orbit / concentric narrative', Component: Style100App },
 ];
+
+const coreIdeas = [
+  'AI in design that feels strong, not generic',
+  'Lower design and production cost',
+  'Faster page creation and launch cycles',
+  'Direct work by product managers without waiting on designers',
+];
+
+const offers: OfferEntry[] = [
+  {
+    name: 'Consultation',
+    price: '200 / hour',
+    outcome: 'Find out what is реально possible for the exact request',
+    bullets: ['concrete feasibility', 'live request review'],
+  },
+  {
+    name: 'AI-First Design Transition Support',
+    price: '1500 / month',
+    outcome: 'Ongoing support while the team moves to an AI-first design workflow',
+    bullets: ['shared calls', 'process support'],
+  },
+  {
+    name: 'AI Design Factory Turnkey',
+    price: '14000 one-off setup / about 15k month dev / up to 45k euro by case',
+    outcome: 'A full page factory for one company or product line',
+    bullets: [
+      'branding',
+      'block architecture',
+      'design guide',
+      'CMS setup',
+      'CMS configuration',
+      'product manager training',
+    ],
+  },
+  {
+    name: 'AI Design Factory Turnkey +',
+    price: 'custom',
+    outcome: 'Turnkey factory plus auto-generation and analytics connection',
+    bullets: ['auto generation', 'analytics integration'],
+  },
+];
+
+function BusinessBrief() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <>
+      <div className="fixed bottom-4 right-4 z-[999999] max-w-[min(92vw,420px)]">
+        <div className="rounded-[24px] border border-black/15 bg-white/92 p-3 shadow-lg backdrop-blur">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.22em] text-black/50">Business brief</div>
+              <div className="mt-1 text-sm font-semibold text-black">AI design factory for branded pages</div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setExpanded((value) => !value)}
+              className="rounded-full border border-black/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-black hover:bg-black hover:text-white"
+            >
+              {expanded ? 'hide' : 'show'}
+            </button>
+          </div>
+
+          <div className="mt-3 grid gap-2">
+            {coreIdeas.map((idea) => (
+              <div key={idea} className="rounded-2xl border border-black/10 px-3 py-2 text-xs text-black/75">
+                {idea}
+              </div>
+            ))}
+          </div>
+
+          {expanded && (
+            <div className="mt-3 grid gap-2">
+              {offers.map((offer) => (
+                <article key={offer.name} className="rounded-[20px] border border-black/10 bg-black/[0.03] p-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="text-sm font-semibold text-black">{offer.name}</div>
+                    <div className="text-[11px] uppercase tracking-[0.16em] text-black/55">{offer.price}</div>
+                  </div>
+                  <div className="mt-2 text-xs text-black/75">{offer.outcome}</div>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {offer.bullets.map((item) => (
+                      <span key={item} className="rounded-full border border-black/10 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-black/60">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
 
 function readStyleFromUrl() {
   return new URLSearchParams(window.location.search).get('style');
@@ -67,6 +170,33 @@ function StyleIndex({
             Open any variant with <code>?style=36</code>, <code>?style=48</code>, <code>?style=100</code>
           </div>
         </header>
+
+        <section className="mt-6 grid gap-3 rounded-[28px] border border-black/15 bg-white p-4 md:grid-cols-2 md:p-5">
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-black/50">Core promise</div>
+            <div className="mt-2 grid gap-2">
+              {coreIdeas.map((idea) => (
+                <div key={idea} className="rounded-2xl border border-black/10 px-3 py-2 text-sm text-black/75">
+                  {idea}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="text-[11px] uppercase tracking-[0.22em] text-black/50">Offers</div>
+            <div className="mt-2 grid gap-2">
+              {offers.map((offer) => (
+                <article key={offer.name} className="rounded-2xl border border-black/10 px-3 py-3">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="text-sm font-semibold">{offer.name}</div>
+                    <div className="text-[11px] uppercase tracking-[0.16em] text-black/55">{offer.price}</div>
+                  </div>
+                  <div className="mt-1 text-xs text-black/70">{offer.outcome}</div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="mt-7 grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-3">
           {styles.map((style) => {
@@ -127,6 +257,7 @@ function Shell({
         </button>
         <span className="opacity-50">{current.name}</span>
       </div>
+      <BusinessBrief />
       <CurrentComponent />
     </div>
   );
